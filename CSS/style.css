@@ -13,7 +13,7 @@ body {
 a, input[type="submit"] {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 20px; /* 10px em cima e embaixo, e 20px nas laterais */
     border-radius: 5px;
     text-decoration: none;
     opacity: 0.7;
