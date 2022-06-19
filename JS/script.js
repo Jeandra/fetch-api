@@ -1,4 +1,4 @@
-const url = "https://jsonplaceholder.typicode.com.posts";
+const url = "https://jsonplaceholder.typicode.com/posts";
 
 const loadingElement = document.querySelector("#loading");
 const postsContainer = document.querySelector("#posts-container");
@@ -25,10 +25,10 @@ async function getAllPosts() {
 
     console.log(data);
 
-    loadingElement.classList.add("hide");
+    loadingElement.classList.add("hide"); // escondendo o elemento de loading da pagina
 
     data.map((post) => {
-        const div = document.createElement("div");
+        const div = document.createElement("div"); // criando elementos html
         const title = document.createElement("h2");
         const body = document.createElement("p");
         const link = document.createElement("a");
@@ -60,13 +60,15 @@ async function getPost(id) {
     postPage.classList.remove("hide");
 
     const title = document.createElement("h1");
-    const body = document.createElement9("p");
+    const body = document.createElement("p");
 
     title.innerText = dataPost.title;
     body.innerText = dataPost.body;
 
-    postContainer.appendChild(title)
+    postContainer.appendChild(title);
     postContainer.appendChild(body);
+
+    console.log(dataComments);
 
     dataComments.map((comment) => {
         createComment(comment);
@@ -74,7 +76,7 @@ async function getPost(id) {
 }
 
 function createComment(comment) {
-    const div = document.createElementNS("div");
+    const div = document.createElement("div");
     const email = document.createElement("h3");
     const commentBody = document.createElement("p");
 
@@ -88,7 +90,7 @@ function createComment(comment) {
 
 // insert a comment 
 async function postComment(comment) {
-    const response = await fetch(url, {
+    const response = await fetch(`${url}/${postId}/comments`, {
         method: "POST",
         body: comment,
         headers: {
@@ -111,7 +113,7 @@ if (!postId) {
 
         let comment = {
             email: emailInput.value,
-            body:bodyInput.value,
+            body: bodyInput.value,
         };
 
         comment = JSON.stringify(comment);
